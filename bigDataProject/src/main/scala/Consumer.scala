@@ -1,7 +1,7 @@
 import org.apache.kafka.clients.consumer.{ConsumerConfig, KafkaConsumer}
 import org.apache.kafka.common.serialization.StringDeserializer
 import org.json4s.native.JsonMethods._
-import org.json4s.{DefaultFormats, JValue, JObject, JString}
+import org.json4s._
 import java.util.Properties
 import java.time.Duration
 import scala.collection.JavaConverters._
@@ -31,21 +31,21 @@ object consumer {
       while (true) {
         val records = consumer.poll(Duration.ofMillis(1000))
         for (record <- records.asScala) {
-          // Parse each record as JSON
           val json = parse(record.value())
           val tweetText = (json \ "text").extract[String]
 
-          // Perform sentiment analysis
+          val hashtags = HashtagExtractor.extractHashtags(tweetText)
           val sentiment = SentimentAnalyzer.analyzeSentiment(tweetText)
-          println(s"Tweet: $tweetText")
-          println(s"Sentiment: $sentiment")
 
-          // Convert sentiment to JObject and merge with JSON
-          val updatedJson: JValue = json merge JObject("sentiment" -> JString(sentiment))
-
-          // Reconvert JSON to string and print it
+          // Create updated JSON with sentiment and hashtags
+          val updatedJson = JObject(
+            json.asInstanceOf[JObject].obj ++ List(
+              "sentiment" -> JString(sentiment),
+              "hashtags" -> JArray(hashtags.map(JString))
+            )
+          )
           val jsonString = compact(render(updatedJson))
-          println(s"Received (with sentiment): $jsonString")
+          println(s"Processed Tweet: $jsonString")
         }
       }
     } catch {

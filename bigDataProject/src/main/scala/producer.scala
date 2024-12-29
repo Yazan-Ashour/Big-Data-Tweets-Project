@@ -1,10 +1,9 @@
 import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
 import scala.io.Source
 import java.util.Properties
-import org.json4s._
 import org.json4s.native.JsonMethods._
 
-object Producer {
+object producer {
   def main(args: Array[String]): Unit = {
     // Kafka Configuration
     val broker = "localhost:9092"
@@ -24,7 +23,7 @@ object Producer {
 
     try {
       // Read the file line by line and send to Kafka
-      for (line <- Source.fromFile(dataFilePath).getLines()) {
+      for (line <-Source.fromFile(dataFilePath).getLines()) {
         // Parse each line as JSON
         val parsedJson = parse(line)
         val jsonString = compact(render(parsedJson)) // Reconvert JSON to string
