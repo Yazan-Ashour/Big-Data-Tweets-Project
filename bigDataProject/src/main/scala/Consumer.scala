@@ -5,12 +5,14 @@ import org.json4s._
 import java.util.Properties
 import java.time.Duration
 import scala.collection.JavaConverters._
+import requests._
 
-object consumer {
+
+object Consumer {
   def main(args: Array[String]): Unit = {
     // Kafka Configuration
     val broker = "localhost:9092"
-    val topic = "tweets_.topic"
+    val topic = "tweets_topic"
 
     // Kafka Consumer Properties
     val props = new Properties()
@@ -34,18 +36,35 @@ object consumer {
           val json = parse(record.value())
           val tweetText = (json \ "text").extract[String]
 
+          // Extract fields based on our schema
+          val createdAt = (json \ "created_at").extractOpt[String]
+          val id = (json \ "id").extractOpt[String]
+          val text = (json \ "text").extractOpt[String]
+          val location: Option[(Double, Double)] = for {
+            coordinates <- (json \ "coordinates" \ "coordinates").extractOpt[List[Double]]
+            if coordinates.size == 2
+          } yield (coordinates(0), coordinates(1))
+
           val hashtags = HashtagExtractor.extractHashtags(tweetText)
           val sentiment = SentimentAnalyzer.analyzeSentiment(tweetText)
 
           // Create updated JSON with sentiment and hashtags
-          val updatedJson = JObject(
-            json.asInstanceOf[JObject].obj ++ List(
-              "sentiment" -> JString(sentiment),
-              "hashtags" -> JArray(hashtags.map(JString))
-            )
+          val schemaJson = JObject(
+            "created_at" -> createdAt.map(JString).getOrElse(JNull),
+            "hashtags" -> JArray(hashtags.map(JString)),
+            "id" -> id.map(JString).getOrElse(JNull),
+            "location" -> location.map {
+              case (lon, lat) => JObject("lon" -> JDouble(lon), "lat" -> JDouble(lat))
+            }.getOrElse(JNull),
+            "sentiment" -> JString(sentiment),
+            "text" -> text.map(JString).getOrElse(JNull)
           )
-          val jsonString = compact(render(updatedJson))
+          val jsonString = compact(render(schemaJson))
           println(s"Processed Tweet: $jsonString")
+
+          // Send the processed tweet to Elasticsearch
+          val response = sendToElasticSearch(jsonString)
+          println(s"Elasticsearch Response: ${response.statusCode} - ${response.text()}")
         }
       }
     } catch {
@@ -53,5 +72,14 @@ object consumer {
     } finally {
       consumer.close()
     }
+  }
+
+  def sendToElasticSearch(jsonString: String): Response = {
+    val elasticUrl = "http://localhost:9200/tweets/_doc"
+    requests.post(
+      url = elasticUrl,
+      data = jsonString,
+      headers = Map("Content-Type" -> "application/json")
+    )
   }
 }
