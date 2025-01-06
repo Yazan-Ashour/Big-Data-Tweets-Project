@@ -1,12 +1,15 @@
 # Real-Time Tweet Stream Processing and Visualization
 
-producer task describtion:
-The producer reads tweets from a JSON file named boulder_flood_geolocated_tweets.json (the data file).
-Each tweet is parsed and sent to a Kafka topic named tweets_.topic.
-The Kafka producer adds a delay of 5 seconds between sending each tweet to simulate real-time streaming.
+# Project Overview:
 
-Code Explanation:
-The producer reads the JSON file line by line.
-Each line is parsed as JSON and then sent to the Kafka topic tweets_.topic.
-The producer uses the Kafka ProducerRecord to send messages to the topic.
-A 5-second delay (Thread.sleep(5000)) is added between messages (simulating real-time streaming) .
+This project involves designing and implementing a complete data pipeline to handle streaming tweets, process them, and visualize the results in a web application. The pipeline includes real-time tweet ingestion, sentiment analysis, hashtag extraction, storage, and visualization of tweets on a map with trend analysis. The goal is to provide a user-friendly interface to interact with the tweet data and gain insights from various aspects, including tweet sentiment, hashtags, and temporal trends.
+
+# Key Features:
+
+1- Real-time Streaming: Continuous tweet stream ingestion from Twitter API or a simulated generator.
+
+2- Data Storage: Processed tweets stored in Elasticsearch for easy querying and analysis.
+
+3- Tweet Processing: Extraction of hashtags, sentiment analysis, and geolocation.
+
+4- Visualization: A web application that allows users to search tweets by keyword, display them on a map, visualize trends over time, and analyze sentiment.
