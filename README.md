@@ -17,6 +17,14 @@ This project involves designing and implementing a complete data pipeline to han
 
 # Data Pipeline Diagram :
 
+```mermaid
+graph LR
+    A[Data Ingestion] --> B[Kafka Topic]
+    B --> C[Data Processing]
+    C --> D[Sentiment Analysis ]
+    D --> E[Elasticsearch Storage]
+    E --> F[Visualization in frontend ]
+
 1- Tweet Stream Ingestion:
 
   - Streams tweets using the Twitter API or a simulated tweet generator.
@@ -79,10 +87,4 @@ This project involves designing and implementing a complete data pipeline to han
 
 # Setup and Installation :
 
-```mermaid
-graph LR
-    A[Real-time Tweet Stream Ingestion] --> B[Kafka Topic]
-    B --> C[Tweet Processing]
-    C --> D[Sentiment Analysis & Geolocation Parsing]
-    D --> E[Elasticsearch Storage]
-    E --> F[Web Application]
+
