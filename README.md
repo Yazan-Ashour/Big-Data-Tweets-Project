@@ -86,4 +86,5 @@ graph LR
     C --> D[Sentiment Analysis & Geolocation Parsing]
     D --> E[Elasticsearch Storage]
     E --> F[Web Application]
-dsfdsfdsf
+mermaid```
+
