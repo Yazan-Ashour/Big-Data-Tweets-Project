@@ -117,10 +117,11 @@ Elasticsearch: If using Elasticsearch, ensure it is running:
 
 Navigate to the frontend directory:
 
-       cd frontend
+        cd frontend
 
 
 Install React dependencies:
+
        npm install
 
 
