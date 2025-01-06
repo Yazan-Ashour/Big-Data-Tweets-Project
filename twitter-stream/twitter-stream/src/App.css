@@ -1,0 +1,25 @@
+.map-trend-container {
+  display: flex; /* لجعل العناصر بجانب بعضها */
+  flex-direction: row; /* تأكيد أن الاتجاه أفقي */
+  gap: 20px; /* إضافة مسافة بين العناصر */
+  justify-content: space-between; /* توزيع العناصر بشكل متساوٍ */
+  align-items: flex-start; /* محاذاة العناصر لأعلى الحاوية */
+  width: 100%; /* جعل الحاوية تأخذ العرض الكامل */
+  margin-top: 20px; /* مسافة من الأعلى */
+}
+
+.map-box {
+  flex: 1; /* جعل الخريطة تأخذ المساحة المتاحة بالتساوي */
+  max-width: 50%; /* منع العنصر من تجاوز نصف الحاوية */
+  height: 300px; /* تعيين ارتفاع للخريطة */
+  background-color: lightblue; /* لون الخلفية للتوضيح */
+  border-radius: 10px; /* زوايا مستديرة */
+}
+
+.trend-diagram {
+  flex: 1; /* توزيع المساحة بالتساوي */
+  max-width: 50%; /* منع الرسم البياني من تجاوز نصف الحاوية */
+  height: 300px; /* تعيين ارتفاع للرسم البياني */
+  background-color: lightgreen; /* لون الخلفية للتوضيح */
+  border-radius: 10px; /* زوايا مستديرة */
+}

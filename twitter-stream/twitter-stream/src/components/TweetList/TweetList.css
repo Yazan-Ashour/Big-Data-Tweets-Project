@@ -1,0 +1,45 @@
+.tweet-list {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  width: 90%;
+  max-width: 1000px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.tweet-list-title {
+  text-align: center;
+  font-size: 22px;
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.tweet-list-items {
+  list-style-type: none;
+  padding: 0;
+}
+
+.tweet-item {
+  font-size: 16px;
+  margin: 10px 0;
+  color: #555;
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  transition: transform 0.2s ease, background-color 0.3s ease-in-out;
+}
+
+.tweet-item:hover {
+  transform: translateX(10px);
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
+.tweet-user {
+  font-weight: bold;
+  color: #000;
+}
