@@ -96,8 +96,42 @@ Start Kafka: Download and start Kafka on your machine:
        bin/kafka-server-start.sh config/server.properties
 
 
+Elasticsearch: If using Elasticsearch, ensure it is running:
 
-نسخ الكود
+       bin/elasticsearch
+
+### 2. Install Frontend Dependencies:
+
+Navigate to the frontend directory:
+
+       cd frontend
+
+
+Install React dependencies:
+       npm install
+
+
+### 3. Running the Project:
+
+Backend: Run the FastAPI server:
+
+       python -m uvicorn main:app --host 127.0.0.1 --port 8000 --reloadBackend: Run
+
+
+Frontend: Start the React application:
+
+       npm start
+
+
+
+
+
+
+
+
+
+
+
 
        
 
