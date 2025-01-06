@@ -85,4 +85,4 @@ graph LR
     B --> C[Tweet Processing]
     C --> D[Sentiment Analysis & Geolocation Parsing]
     D --> E[Elasticsearch Storage]
-    E --> F[Web Application]```
+    E --> F[Web Application]
