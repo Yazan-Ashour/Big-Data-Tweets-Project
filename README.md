@@ -15,7 +15,7 @@ This project involves designing and implementing a complete data pipeline to han
 4- Visualization: A web application that allows users to search tweets by keyword, display them on a map, visualize trends over time, and analyze sentiment.
 
 
-# Data Pipeline Diagram :
+# Data Pipeline :
 
 1- Tweet Stream Ingestion:
 
@@ -90,7 +90,9 @@ Create a virtual environment and install the required Python packages:
 
 Start Kafka: Download and start Kafka on your machine:
 
-       # Start Zookeeper
+       # The place where you will work and run
+       cd C:\kafka_2.12-3.8.1\bin\windows 
+       # Start Zookeeper 
        bin/zookeeper-server-start.sh config/zookeeper.properties
        # Start Kafka
        bin/kafka-server-start.sh config/server.properties
@@ -123,10 +125,26 @@ Frontend: Start the React application:
        npm start
 
 
+### 4. Access the Web Application:
+
+Once the backend and frontend are running, open your browser and navigate to http://localhost:3000. You can input a keyword to search tweets, view them on a map,
+see the sentiment gauge, and view trends.
 
 
+# Conclusion :
+
+This project showcases a full end-to-end data pipeline for processing real-time tweet streams, performing sentiment analysis, and visualizing the data in a web interface. By leveraging Kafka for stream handling, Elasticsearch for storage, and React for visualization, this pipeline offers a scalable and interactive solution for tweet analysis and exploration.
 
 
+# Data Pipeline Diagram :
+
+```mermaid
+graph LR
+    A[Data Ingestion] --> B[Kafka Topic]
+    B --> C[Data Processing]
+    C --> D[Sentiment Analysis ]
+    D --> E[Elasticsearch Storage]
+    E --> F[Visualization in frontend ]
 
 
 
