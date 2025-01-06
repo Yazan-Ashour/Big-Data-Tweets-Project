@@ -81,4 +81,13 @@ This project involves designing and implementing a complete data pipeline to han
 
 ### 1. Install Backend Dependencies:
 
+       Create a virtual environment and install the required Python packages:
+       
+       python -m venv env
+       pip install fastapi elasticsearch requests
+       pip install stanfordnlp
+
+
+       
+
 
