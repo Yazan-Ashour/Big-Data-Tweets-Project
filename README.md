@@ -1,4 +1,4 @@
-# Big-Data-Tweets-Project
+# Real-Time Tweet Stream Processing and Visualization
 
 producer task describtion:
 The producer reads tweets from a JSON file named boulder_flood_geolocated_tweets.json (the data file).
