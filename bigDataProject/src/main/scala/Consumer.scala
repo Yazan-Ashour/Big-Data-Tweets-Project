@@ -5,10 +5,9 @@ import org.json4s._
 import java.util.Properties
 import java.time.Duration
 import scala.collection.JavaConverters._
-import requests._
 
 
-object Consumer {
+object consumer {
   def main(args: Array[String]): Unit = {
     // Kafka Configuration
     val broker = "localhost:9092"
@@ -61,10 +60,7 @@ object Consumer {
           )
           val jsonString = compact(render(schemaJson))
           println(s"Processed Tweet: $jsonString")
-
-          // Send the processed tweet to Elasticsearch
-          val response = sendToElasticSearch(jsonString)
-          println(s"Elasticsearch Response: ${response.statusCode} - ${response.text()}")
+          val response = sendToElasticSearch.sendToElasticSearch(jsonString)
         }
       }
     } catch {
@@ -72,14 +68,5 @@ object Consumer {
     } finally {
       consumer.close()
     }
-  }
-
-  def sendToElasticSearch(jsonString: String): Response = {
-    val elasticUrl = "http://localhost:9200/tweets/_doc"
-    requests.post(
-      url = elasticUrl,
-      data = jsonString,
-      headers = Map("Content-Type" -> "application/json")
-    )
   }
 }
