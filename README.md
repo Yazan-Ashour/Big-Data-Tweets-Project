@@ -17,13 +17,13 @@ This project involves designing and implementing a complete data pipeline to han
 
 # Data Pipeline Diagram :
 
-```mermaid
 graph LR
     A[Data Ingestion] --> B[Kafka Topic]
     B --> C[Data Processing]
-    C --> D[Sentiment Analysis ]
+    C --> D[Sentiment Analysis]
     D --> E[Elasticsearch Storage]
-    E --> F[Visualization in frontend ]
+    E --> F[Visualization in Frontend]
+
 
 1- Tweet Stream Ingestion:
 
