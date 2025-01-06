@@ -58,7 +58,7 @@ This project involves designing and implementing a complete data pipeline to han
 
 # Dependencies:
 
-Backend (FastAPI & Kafka):
+## Backend (FastAPI & Kafka):
 
 1- FastAPI: A modern, fast web framework for building APIs.
 
@@ -68,7 +68,7 @@ Backend (FastAPI & Kafka):
 
 4- Stanford CoreNLP: For sentiment analysis.
 
-Frontend (React):
+## Frontend (React):
 
 1- React: A JavaScript library for building user interfaces.
 
