@@ -77,3 +77,6 @@ This project involves designing and implementing a complete data pipeline to han
 3- D3.js: For rendering trend diagrams.
 
 
+# Setup and Installation :
+
+
