@@ -88,6 +88,17 @@ Create a virtual environment and install the required Python packages:
        pip install stanfordnlp
 
 
+scala Version:You must be using these libraries in Scala
+
+       libraryDependencies += "org.apache.kafka" % "kafka-clients" % "3.8.1"
+       libraryDependencies += "org.json4s" %% "json4s-native" % "4.0.6"
+       libraryDependencies += "edu.stanford.nlp" % "stanford-corenlp" % "4.2.0"
+       libraryDependencies += "edu.stanford.nlp" % "stanford-corenlp" % "4.2.0" classifier "models"
+       libraryDependencies += "com.lihaoyi" %% "requests" % "0.8.0"
+
+
+
+
 Start Kafka: Download and start Kafka on your machine:
 
        # The place where you will work and run
@@ -122,7 +133,7 @@ Backend: Run the FastAPI server:
 
 Frontend: Start the React application:
 
-       npm start
+        npm start
 
 
 ### 4. Access the Web Application:
