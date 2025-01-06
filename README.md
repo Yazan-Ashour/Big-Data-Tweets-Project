@@ -40,3 +40,40 @@ This project involves designing and implementing a complete data pipeline to han
  - The frontend allows users to interact with the processed tweet data.
   
  - Users can search tweets, view sentiment trends, and see tweet distribution on the map based on geolocation.
+
+
+# Requirements :
+
+# System Requirements:
+
+1- Java (for Kafka): Java 8 or higher
+
+2- Apache Kafka: Version 2.8.0 or higher
+
+3- Elasticsearch: Version 7.x or higher (for Elasticsearch integration)
+
+4- Scala: Version 2.12.18 (for backend services)
+
+5- Python: Version 3.6 or higher (for sentiment analysis)
+
+# Dependencies:
+
+Backend (FastAPI & Kafka):
+
+1- FastAPI: A modern, fast web framework for building APIs.
+
+2- Kafka: For stream processing and message queuing.
+
+3- Elasticsearch/MongoDB: For data storage and querying.
+
+4- Stanford CoreNLP: For sentiment analysis.
+
+Frontend (React):
+
+1- React: A JavaScript library for building user interfaces.
+
+2- Leaflet: For rendering the map visualization.
+
+3- D3.js: For rendering trend diagrams.
+
+
