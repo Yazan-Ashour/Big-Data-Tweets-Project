@@ -32,7 +32,7 @@ object producer {
         producer.send(new ProducerRecord[String, String](topic, jsonString))
         println(s"Sent: $jsonString")
 
-        Thread.sleep(5000) // Simulate real-time streaming
+        Thread.sleep(1000) // Simulate real-time streaming
       }
     } catch {
       case e: Exception => println(s"Error: ${e.getMessage}")
